@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- HTML结构 -->
+    <form id="test-register" action="#" target="_blank" onsubmit="return checkRegisterForm()">
+        <p id="test-error" style="color:red"></p>
+        <p>
+            用户名: <input type="text" id="username" name="username">
+        </p>
+        <p>
+            口令: <input type="password" id="password" name="password">
+        </p>
+        <p>
+            重复口令: <input type="password" id="password-2">
+        </p>
+        <p>
+            <button type="submit">提交</button> <button type="reset">重置</button>
+        </p>
+    </form>
+    <script>
+        var checkRegisterForm = function () {  
+        var re_name = /\w{3,10}/
+        var re_password = /.{6,20}/
+        var user_name = document.getElementById('username').value
+        var password = document.getElementById('password').value
+        var password2 = document.getElementById('password-2').value
+        if (!re_name.test(user_name)){
+        alert('用户名为3-10以内的数字或英文字母')
+        return false}
+        if (!re_password.test(password)){
+        alert('密码必须在6-20位以内')
+        return false}
+        if (password !== password2){
+        alert('两次输入密码不一致')
+        return false}
+        return true}
+    </script>
+    <script>
+                var checkRegisterForm = function () {
+                    var username = document.getElementById("username").value;
+                    var usernameCheck = /^[A-Za-z0-9]{3,10}$/;
+                    var check1 = usernameCheck.test(username);
+                    var password = document.getElementById("password").value;
+                    var passwordCheck = /\w{6,20}/;
+                    var check2 = passwordCheck.test(password);
+                    var password2 = document.getElementById("password-2").value;  
+                    return check1 && check2 && password===password2;
+                } 
+    </script>
+</body>
+</html>

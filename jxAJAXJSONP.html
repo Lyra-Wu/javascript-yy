@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    //JSONP示例：股票查询
+     //准备好回调函数：
+     function refreshPrice(data) {
+        var p = document.getElementById('test-jsonp');
+        p.innerHTML = '当前价格：' +
+            data['0000001'].name +': ' + 
+            data['0000001'].price + '；' +
+            data['1399001'].name + ': ' +
+            data['1399001'].price;
+    }
+
+    //用getPrice()函数触发：
+    function getPrice() {
+        var
+            js = document.createElement('script'),
+            head = document.getElementsByTagName('head')[0];
+        js.src = 'http://api.money.126.net/data/feed/0000001,1399001?callback=refreshPrice';
+        head.appendChild(js);
+    }
+
+   </script>
+</body>
+</html>

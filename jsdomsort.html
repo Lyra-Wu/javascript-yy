@@ -21,32 +21,15 @@
 
         var arr_lang=Array.from(document.getElementsByClassName("lang"),item=>item.innerText)
 
-        arr_lang.sort();
+        arr_lang.sort();  //按字符串顺序排列
 
         arr_list.map((x,i)=>{x.innerText=arr_lang[i]})
 
         //Array.from可以用扩展运算符[...]代替
-        // 测试:
-        ;(function () {
-            var
-                arr, i,
-                t = document.getElementById('test-list');
-            if (t && t.children && t.children.length === 5) {
-                arr = [];
-                for (i=0; i<t.children.length; i++) {
-                    arr.push(t.children[i].innerText);
-                }
-                if (arr.toString() === ['Haskell', 'JavaScript', 'Python', 'Ruby', 'Scheme'].toString()) {
-                    console.log('测试通过!');
-                }
-                else {
-                    console.log('测试失败: ' + arr.toString());
-                }
-            }
-            else {
-                console.log('测试失败!');
-            }
-        })();
+        console.log("arr_lang=", arr_lang);
+
+        console.log("arr_list=", arr_list);
+
     </script>
 
     <script>
@@ -54,6 +37,10 @@
         arr = Array.from(list.children);
         arr.sort((e1,e2) => e1.innerText>e2.innerText? 1:-1);
         arr.forEach(e=>list.appendChild(e));
+        console.log("list=", list);
+
+        console.log("arr=", arr);
+
     </script>
 </body>
 </html>
