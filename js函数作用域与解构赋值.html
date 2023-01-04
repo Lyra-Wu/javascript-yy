@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const PI = 3.14;
+        console.log('PI=', PI)
+        // PI = 3; // 报错：Uncaught TypeError: Assignment to constant variable.
+        // 未捕获类型错误：分配给常量变量。
+        console.log('PI1=', PI)
+        PI; // 3.14
+        //使用解构赋值，直接对多个变量同时赋值：
+        var [x, y, z] = ['hello', 'JavaScript', 'ES6'];
+        // x, y, z分别被赋值为数组对应元素:
+        console.log('x = ' + x + ', y = ' + y + ', z = ' + z);
+        //从一个对象中取出若干属性，也可以使用解构赋值
+        var person = {
+            name: '小明',
+            age: 20,
+            gender: 'male',
+            passport: 'G-12345678',
+            school: 'No.4 middle school'
+        };
+        var {name, age, passport} = person;
+        // name, age, passport分别被赋值为对应属性:
+        console.log('name = ' + name + ', age = ' + age + ', passport = ' + passport);
+    </script>
+
+    <script>
+        var person = {
+            name: '小明',
+            age: 20,
+            gender: 'male',
+            passport: 'G-12345678',
+            school: 'No.4 middle school',
+            address: {
+                city: 'Beijing',
+                street: 'No.1 Road',
+                zipcode: '100001'
+            }
+        };
+        var {name, address: {city, zip}} = person;
+        console.log('name = ', name);
+        console.log('city = ', city);
+        console.log('zip = ', zip);
+        // 注意: address不是变量，而是为了让city和zip获得嵌套的address对象的属性:
+        // console.log('address = ', address);
+        // name =  小明
+        // city =  Beijing
+        // zip =  undefined
+        // Uncaught ReferenceError: address is not defined
+    </script>
+
+    <script>
+        // 声明变量:
+        var x, y;
+        // 解构赋值:
+         ({name, x, y} = { name: '小li', x: 100, y: 200});
+        console.log('name = ', name);
+        console.log('x = ', x);
+        console.log('y = ', y);
+        // name =  小li
+        // x =  100
+        // y =  200
+    </script>
+  
+</body>
+</html>

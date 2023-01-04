@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //用浏览器访问OpenWeatherMap的天气API，查看返回的JSON数据，然后返回城市、天气预报等信息：
+        
+'use strict'
+var url = 'https://api.openweathermap.org/data/2.5/forecast?q=Beijing,cn&appid=800f49846586c3ba6e7052cfc89af16c';
+$.getJSON(url, function (data) {
+    var info = {
+        city: data.city.name,
+        weather: data.list[0].weather[0].main,
+        time: data.list[0].dt_txt
+    };
+    console.log(JSON.stringify(info, null, '  '));
+
+});
+    </script>
+</body>
+</html>

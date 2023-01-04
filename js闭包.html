@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function lazy_sum(arr) {
+        var sum = function () {
+            return arr.reduce(function (x, y) {
+                return x + y;
+            });
+        }
+        return sum;
+    }
+    var f = lazy_sum([1, 2, 3, 4, 5]);
+    console.log(" f= ", f);
+    console.log(" f()= ", f());
+
+    var f1 = lazy_sum([1, 2, 3, 4, 5, 6]);
+    var f2 = lazy_sum([1, 2, 3, 4, 5, 6]);
+    f1 === f2; // false
+    console.log(" f1 === f2 ", f1 === f2);
+
+
+    var f3 = lazy_sum([]);
+    var f4 = lazy_sum([]);
+    f3 === f4; // false
+    console.log(" f3 === f4 ", f3 === f4);
+    </script>
+
+
+
+    <script>
+        function count() {
+            var arr = [];
+            for (var i=1; i<=3; i++) {
+                arr.push(function () {
+                    return i * i;
+                });
+            }
+            console.log(" arr= ", arr); // [ƒ, ƒ, ƒ]   
+            //此时，即（i=4  f=i*i）但凡调用f，即执行f=i*i=4*4=16
+            return arr;
+        }
+        console.log(" count= ", count);
+        /* count=  ƒ count() {
+            var arr = [];
+            for (var i=1; i<=3; i++) {
+                arr.push(function () {
+                    return i * i;
+                });
+            }
+            retur…*/
+        var results = count();
+        console.log(" results= ", results); // [ƒ, ƒ, ƒ]
+        var f1 = results[0];
+        var f2 = results[1];
+        var f3 = results[2];
+        console.log(" f1= ", f1);
+        /* ƒ () {
+            return i * i;
+                }*/         //即 {return 16；}
+        console.log(" f2= ", f2);  // ƒ () {return i * i;}  此时const i=4;
+        console.log(" f3= ", f3);  // ƒ () {return i * i;}   即 {return 16；}
+        console.log(" f1()= ", f1()); //16       const i=4;
+        console.log(" f2()= ", f2());  // 16
+        console.log(" f3()= ", f3());  // 16
+        console.log(" f1()= ", f1()); //16 
+    </script>
+
+    <script>
+        function count() {
+            var arr = [];
+            for (var i=1; i<=3; i++) {
+                arr.push(
+                    (function (n) {
+                    return function () {
+                        return n * n;
+                    }
+                })(i)
+                );
+            }
+            return arr;
+        }
+        var results = count();
+        console.log(" results= ", results); // [ƒ, ƒ, ƒ]
+        var f1 = results[0];
+        var f2 = results[1];
+        var f3 = results[2];
+        console.log(" f1= ", f1);  
+        /* f1=  ƒ () {
+                        return n * n;
+                    }*/
+        console.log(" f2= ", f2);  // ƒ () {return n * n;}   即 i =2 为绑定参数 {return 4；}
+        console.log(" f3= ", f3);  
+        console.log(" f1()= ", f1()); //1
+        console.log(" f2()= ", f2());  //4
+        console.log(" f3()= ", f3());  //9
+        console.log(" f1()= ", f1()); //1
+    </script>
+</body>
+</html>

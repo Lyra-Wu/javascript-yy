@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var x = 1;
+        var i;
+        for(i=2; i<=10; i++){
+            x = x * i;
+        }
+        console.log(" x = ", x);
+    </script>
+
+    <script>
+        var arr = ['Apple', 'Google', 'Microsoft'];
+        var i, x;
+        for (i=0; i<arr.length; i++) {
+            x = arr[i];
+            console.log(x);
+        }      
+    </script>
+
+    
+
+    <script>
+        var arr = ['Bart', 'Lisa', 'Adam'];
+        for(i=0; i<arr.length; i++){
+            console.log(" i = ", i);
+            console.log(` Hello, ${arr[i]} !`);
+        }
+    </script>
+
+<script>
+     var arr = ['Bart', 'Lisa', 'Adam'];
+        for(i=arr.length-1; i>=0; i--){
+            console.log(" i = ", i);
+            console.log(` Hello, ${arr[i]} !`);
+        }
+</script>
+    
+
+    <script>
+        var arr = ['Bart', 'Lisa', 'Adam'];
+        var i=0;
+        while(i<arr.length){
+            console.log(" i = ", i);
+            console.log(` Hello, ${arr[i]} !`);
+            i++;
+        } 
+    </script>
+
+    <script>
+        var arr = ['Bart', 'Lisa', 'Adam'];
+        var i=arr.length-1;
+        while(i>=0){
+            console.log(" i = ", i);
+            console.log(` Hello, ${arr[i]} !`);
+            i--;
+        } 
+    </script>
+
+
+   <script>
+        // for正序
+
+        for (var i in arr) {
+
+        console.log(arr[i])
+
+        };
+
+        // for逆序
+
+        l = arr.length - 1
+
+        for (var i in arr) {
+
+        console.log(arr[l - i])
+
+        };
+
+        // while正序
+
+        m = arr.length
+
+        i = 0
+
+        while (i < m) {
+
+        console.log(arr[i]);
+
+        i = i + 1;
+
+        };
+
+        // while逆序
+
+        i = arr.length-1
+
+        while (i >= 0) {
+
+        console.log(arr[i]);
+
+        i = i - 1;
+
+        };
+
+        // do...while正序
+
+        i = 0
+
+        do {
+
+        console.log(arr[i]);
+
+        i = i + 1;
+
+        } while (i < arr.length);
+
+        // do...while逆序
+
+        i = arr.length-1
+
+        do {
+
+        console.log(arr[i]);
+
+        i = i - 1;
+
+        } while (i >= 0);
+    </script>
+
+
+
+
+
+    
+</body>
+</html>

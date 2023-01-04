@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function abs(x) {
+            if (typeof x !== 'number') {
+            throw 'Not a number';
+        }
+        if (x >= 0) {
+            return x;
+        } else {
+            return -x;
+        }
+    }
+    console.log("  = ", abs());
+    console.log(" -7 = ", abs(-7));
+
+
+    </script>
+</body>
+</html>

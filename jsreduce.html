@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function string2int(s) {
+        var arr=Array.from(s);// 字符串转为字符数组'12345'=>['1','2','3','4','5']
+        arr=arr.map(i=>i*1);// 字符数组转为数字数组[1,2,3,4,5]
+        var num= arr.reduce((x,y)=>{
+
+        return x*10+y;
+
+        });
+
+        return num;}
+        console.log('string2int(12300)=', string2int('12300'));
+        console.log('string2int(0)=', string2int('0'));
+
+        /*1.return arr.reduce((x,y)=>x*y)
+
+        2.return s.split(' ').map(x=>x*1).reduce((x,y)=>(x*10+y))
+
+        3.return arr.map(x=>(x.substring(0,1).toUpperCase()+x.substring(1).toLowerCase()))
+
+        4.r=arr.map(x=>x*1)*/
+        //Array.map(x=>x*1):相当于先定义function foo(x){return x*1;}，再Array.map(foo);
+        //x*1:是利用纯数字字符与数字相乘，结果为数字的特性，把单个字符转为数字。
+        /*return arr.reduce((x,y)=>x*y);
+        return Array.from(s).map(x=>x*1).reduce((x,y)=>x*10+y);
+        return arr.map(s=>s.slice(0,1).toUpperCase()+s.slice(1).toLowerCase());
+        r = arr.map(x=>parseInt(x));*/
+    </script>
+
+    <script>
+        function string2int1(s) {     //split() 方法用于把一个字符串分割成字符串数组。
+                                           //https://www.runoob.com/jsref/jsref-split.html
+            var ch= s.split('');   //字符串转为单个字符
+            console.log('ch=', ch);
+            function nu(x){return x*1;}
+            var n=ch.map(nu);  //字符转为数字；
+            console.log('n=', n);
+            var rst= n.reduce(function(x,y){return x*10+y;})
+            console.log('rst=', rst);
+            return rst;
+        }
+        string2int1('12300');
+        string2int1('0');
+
+        function string2int2(s) {
+            return s.split('').map(function(t){return t*1;}).reduce(function(x,y){return x*10+y;})
+
+        }
+        console.log('string2int2(12300)=', string2int2('12300'));
+        console.log('string2int2(0)=', string2int2('0'));
+    </script>
+</body>
+</html>

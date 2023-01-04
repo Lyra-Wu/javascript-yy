@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var re1 = /ABC\-001/;
+        var re2 = new RegExp('ABC\\-001');
+        console.log('re1=',re1); // /ABC\-001/
+        console.log('re2=',re2); // /ABC\-001/
+
+        'a b   c'.split(' '); // ['a', 'b', '', '', 'c']
+        'a b   c'.split(/\s+/); // ['a', 'b', 'c']
+        'a,b, c  d'.split(/[\s\,]+/); // ['a', 'b', 'c', 'd']
+        'a,b;; c  d'.split(/[\s\,\;]+/); // ['a', 'b', 'c', 'd']
+
+        var re = /^(\d+?)(0*)$/;
+        re.exec('102300'); // ['102300', '1023', '00']
+        console.log('re.exec(102300)=',re.exec('102300'));
+
+        var re = /^(\d*?)(0*)$/;// ['102300', '1023', '00']
+        var re = /^(\d?)(0*)$/;// null
+        
+        re.exec('102300'); // ['102300', '1023', '00']
+        console.log('re.exec(102300)=',re.exec('102300'));
+
+
+
+    </script>
+</body>
+</html>

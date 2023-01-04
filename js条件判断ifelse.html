@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var bmi =(weight/height)^2 ;
+        if(bmi<18.5){
+            document.write("您的体重过轻！");
+        }else if(18.5<=bmi<25){
+            document.write("您的体重正常！");
+        }else if(25<=bmi<28){
+            document.write("您的体重过重！");
+        }else if(28<=bmi<32){
+            document.write("您的体重肥胖！");
+        }else{
+            document.write("您的体重严重肥胖！");
+        };
+
+        //同学作业
+        var bmi = weight / height / height;
+        var trans_bmis = [bmi - 18.5 < 0, bmi - 25 < 0, bmi - 28 < 0, bmi - 32 < 0,bmi - 32 >= 0];
+        var std = ["过轻", "正常", "过重", "肥胖", "严重肥胖"];
+        var idx = trans_bmis.indexOf(true);
+        console.log(std[idx]);
+        
+</script> 
+</body>
+</html>

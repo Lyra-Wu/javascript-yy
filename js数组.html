@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+        console.log(" arr = ", arr, typeof(arr));  
+
+        var aCopy = arr.slice();
+        console.log(" aCopy = ", aCopy, typeof(aCopy)); 
+
+        aCopy; // ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+        var bool= aCopy === arr; // false
+        console.log(" bool = ",bool); 
+        console.log("aCopy === arr ",aCopy === arr ); 
+        console.log("aCopy == arr ",aCopy == arr ); 
+        console.log("aCopy.constructor === arr.constructor",aCopy.constructor === arr.constructor); 
+        console.log("aCopy === arr.constructor",aCopy === arr.constructor); 
+        console.log("aCopy.constructor === arr",aCopy.constructor === arr); 
+
+        var b = arr.splice(0,7); 
+        console.log(" b = ", b,typeof(b)); 
+        console.log(" b == arr ",b == arr)
+        console.log(" b === arr ",b === arr)
+        console.log(" b.constructor == arr ",b.constructor == arr)
+        console.log(" b.constructor === arr ",b.constructor === arr)
+        console.log(" b.constructor === arr.constructor ",b.constructor === arr.constructor)
+        console.log(" b.constructor === Array",b.constructor === Array)
+        console.log(" aCopy.constructor === Array",aCopy.constructor === Array)
+
+
+        var arr3 = [1, 2, 3, 4, 5];
+        arr3.push('A', 'B'); // 返回Array新的长度: 4
+        console.log(" arr3 = ", arr3);  // [1, 2, 'A', 'B']
+        arr3.pop(); 
+        console.log("  arr3.pop() = ",  arr3.pop()); // 'A'
+        var rtn = arr3.pop();
+        console.log(" rtn2 = ", rtn); // 'A'
+        console.log(" arr3 = ", arr3); // [1, 2]
+
+        arr3.pop(); arr3.pop(); // 连续pop 2次
+        console.log(" arr3 = ", arr3); // []
+        arr3.pop(); // 空数组继续pop不会报错，而是返回undefined
+        console.log(" arr3 = ", arr3);  // []
+
+
+        var arr4 = ['Microsoft', 'Apple', 'Yahoo', 'AOL', 'Excite', 'Oracle'];
+        // 从索引2开始删除3个元素,然后再添加两个元素:
+        var sp1 = arr4.splice(2, 3, 'Google', 'Facebook'); 
+        console.log(" sp1 = ", sp1);// 返回删除的元素 ['Yahoo', 'AOL', 'Excite']
+        console.log(" arr4 = ", arr4); // ['Microsoft', 'Apple', 'Google', 'Facebook', 'Oracle']
+        
+        // 只删除,不添加:
+        var sp2 = arr4.splice(2, 2); 
+        console.log(" sp2 = ", sp2); // ['Google', 'Facebook']
+        console.log(" arr4 = ", arr4);// ['Microsoft', 'Apple', 'Oracle']
+
+        // 只添加,不删除:
+        var sp3 = arr4.splice(2, 0, 'Google', 'Facebook'); 
+        console.log(" sp3 = ", sp3);// 返回[],因为没有删除任何元素
+        console.log(" arr4 = ", arr4); // ['Microsoft', 'Apple', 'Google', 'Facebook', 'Oracle']
+
+        var added = arr4.concat(1, 2, [3, 4]);
+        console.log(" added = ", added);// ['Microsoft', 'Apple', 'Google', 'Facebook', 'Oracle', 1, 2, 3, 4]
+        console.log(" arr4 = ", arr4); // ['Microsoft', 'Apple', 'Google', 'Facebook', 'Oracle']
+
+
+        'use strict';
+        var arr5 = [[1, 2, 3], [400, 500, 600], '-'];
+        var res = arr5[1];
+        console.log(" res = ", res);
+        var rst = res[1];
+        console.log(" rst = ", rst);
+        //同学优化作业；
+        var rst1 = arr5[1].splice(1,1)
+        console.log(" rst1 = ", rst1);
+
+
+
+
+
+        'use strict';
+        var arr6 = ['小明', '小红', '大军', '阿黄'];
+        var arrs = arr6.sort();
+        console.log(" arrs = ", arrs);
+        console.log('欢迎', arrs[0],', ',arrs[1],', ',arrs[2],'和',arrs[3],'同学！');
+
+        //同学优化作业；
+        'use strict';
+        var arr61 = ['小明', '小红', '大军', '阿黄'];
+        var arrs1 =arr61.sort();
+        //slice截取,join连接, 反引号, 模板字符串
+        console.log('欢迎'+(arrs1.slice(0,3)).join(',')+`和${arrs1[3]}同学！！！`);
+        console.log(`欢迎${arrs1[0]},${arrs1[1]},${arrs1[2]},和${arrs1[3]}同学！`);
+
+
+    </script>
+</body>
+</html>

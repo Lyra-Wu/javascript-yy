@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function* next_id() {
+            let id = 1,
+                len = 100;
+            while (len){
+                yield id++;
+                len --;
+            }
+            }
+    </script>
+
+    <script>
+         function* next_id(x) {
+            for (let id = 1; id<=x ; id++) {  
+            // yield时跳出函数并储存当时的状态。
+            //执行next()时还原当时的状态，从上次yield的位置向下执行。
+            yield id;
+        } 
+            }  
+            for(i of next_id(10) ) {
+                console.log(i)  //1,2,3,4,5,6,7,8,9,10
+            }  
+    </script>
+
+    <script>
+        function* next_id() {
+            let id =1;
+            while (true) {
+            yield id++;
+            }    
+            return;
+            }
+           var  fn = next_id(10);
+           console.log('fn.next()=',fn.next())
+           console.log('fn.next()=',fn.next())
+           console.log('fn.next()=',fn.next())
+           console.log('fn.next()=',fn.next())
+        /*fn.next()= {value: 1, done: false}
+        fn.next()= {value: 2, done: false}
+        fn.next()= {value: 3, done: false}
+        fn.next()= {value: 4, done: false}*/
+    </script>
+    
+</body>
+</html>

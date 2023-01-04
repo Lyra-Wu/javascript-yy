@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var climbStairs = function(n) {
+        if(n==1){return 1;}
+        if(n==2){return 2;}
+        var a=1, b=2, temp;
+       for(var i=3; i<=n; i++){
+            temp=a,
+            //console.log('temp=',temp);  //1
+            //console.log('a=',a);   //1
+            a=b,
+            //console.log('a=',a);  //2
+            //console.log('b=',b);  //2
+            //b=b+temp;
+            //console.log('b=',b);  //3
+            b=a+temp;
+            //console.log('b=',b);  //3
+        }return b;
+        };
+        climbStairs(3);
+
+       console.log('climbStairs(3)=',climbStairs(3));
+        console.log('climbStairs(4)=',climbStairs(4));
+        console.log('climbStairs(5)=',climbStairs(5));
+        console.log('climbStairs(6)=',climbStairs(6));
+        console.log('climbStairs(7)=',climbStairs(7));
+        console.log('climbStairs(8)=',climbStairs(8));
+        console.log('climbStairs(9)=',climbStairs(9));
+        console.log('climbStairs(10)=',climbStairs(10));
+        console.log('climbStairs(11)=',climbStairs(11));
+        console.log('climbStairs(12)=',climbStairs(12));
+        console.log('climbStairs(13)=',climbStairs(13));
+
+    </script>
+</body>
+</html>

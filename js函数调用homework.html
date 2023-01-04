@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>   //作业1
+        var rst=0;
+        function sum(...rest) {
+      rest.forEach(function(n){rst += n; })
+      return rst;
+      }
+      sum(1,2,3,7,8,5);
+      console.log('sum(1,2,3,7,8,5)=', rst);
+    </script>
+
+    <script>    //作业修改
+     var rst=0;
+    function sum(...rest){
+        if(rest.length===0){
+            return rst;
+        }else{
+            rest.forEach(function(n){
+                rst +=n;
+            })
+            return rst;
+        }
+    }
+    sum(5,6,3,1,2,4);
+    console.log('sum(5,6,3,1,2,4)=', rst);
+    </script>
+
+    <script>  //作业1
+    function area_of_circle(r, pi) {
+        if (arguments.length ===1){
+            pi =3.14;
+            return pi*r*r
+            }else{
+            return pi*r*r
+            };}
+            console.log('area_of_circle(2) =', area_of_circle(2));
+            console.log('area_of_circle(2,3.1416) =', area_of_circle(2,3.1416));
+            // 测试:
+            if (area_of_circle(2) === 12.56 && area_of_circle(2, 3.1416) === 12.5664) {
+                console.log('测试通过');
+            } else {
+                console.log('测试失败');
+            }
+    </script>    
+
+    <script>    //同学作业
+        function area_of_circle(r, pi) {
+            return pi?pi*r*r:3.14*r*r;
+        };
+        console.log('area_of_circle(5) =', area_of_circle(5));
+        console.log('area_of_circle(5,3.1416) =', area_of_circle(5,3.1416)); 
+    </script>
+    
+</body>
+</html>

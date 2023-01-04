@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = ['A', '', 'B', , 'C', '  '];
+        var r = arr.filter(function (s) {
+            console.log(" s= ", s);
+            console.log(" s.trim()= ", s.trim());
+            return s.trim(); // 注意：IE9以下的版本没有trim()方法
+        });
+        console.log(" r= ", r);
+    </script>
+    <script>
+        var arr = ['A', 'B', 'C'];
+        var t = arr.filter(function (element, index, self) {
+            console.log(element); // 依次打印'A', 'B', 'C'
+            console.log(index); // 依次打印0, 1, 2
+            console.log(self); // self就是变量arr
+            return true;     //return element;
+        });
+        console.log(" t= ", t);
+    </script>
+
+    <script>
+        //利用filter，可以巧妙地去除Array的重复元素：
+        var r,
+        arr = ['apple', 'strawberry', 'banana', 'pear', 'apple', 'orange', 'orange', 'strawberry'];
+        v = arr.filter(function (element, index, self) {
+            return self.indexOf(element) === index;
+        });
+        console.log(" v= ", v);
+        console.log("  v.toString()= ", v.toString());
+    </script>
+
+
+       <!-- arr.filter()      正确实现一个“筛选”函数。 -->
+    <script>   //筛选出素数**************************************************************************
+    function get_primes(arr) {
+        return arr.filter(
+            function(x){
+                // 3. z = x>y ? x-y : x+y; 
+                let count =0;
+                for(let i=1; i<=x; i++){
+                     if(x % i ===0){
+                        count++;}    
+                }   
+            return count ===2 ? true:false;
+        }
+            );
+    }
+
+
+    //参考1 ******************************************************************************
+    return arr.filter(x=>{
+        if (x===0||x===1){return false}
+        for (i=2;i<x;i++){
+            if (x%i===0){return false}
+        }
+        return true;  
+    })
+
+
+    return arr.filter(x=>{
+        if (x===0||x===1){return false}
+        for (i=2;i<x;i++){
+            if(x%i===0){return false}
+        }
+        return true;  //*******************************
+    }
+    )
+
+    //参考2***********************************************************************************
+    return arr.filter((e,i,a)=>{
+    return e!=1 && a.filter(x=>e%x ==0).length<=2 //公约数x<=2个***********************  ***********
+    })
+
+    return arr.filter((e,i,a)=>{
+        return e !=0 && e !=1 && a.filter(x=>e%x==0).length<=2
+
+    }
+    );
+
+
+    // 测试:
+    var x,r,arr = [];
+    for (x = 1; x < 100; x++) {
+        arr.push(x);
+    }
+    r = get_primes(arr);
+    if (r.toString() === [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97].toString()) {
+        console.log('测试通过!');
+    } else {
+        console.log('测试失败: ' + r.toString());
+    }
+    </script>
+</body>
+</html>

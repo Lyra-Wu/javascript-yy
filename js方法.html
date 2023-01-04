@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var xiaoming = {
+            name: '小明',
+            birth: 1990,
+            age: function () {var y = new Date().getFullYear();
+                return y - this.birth;
+            }
+            
+           /* var age= function () {
+            var y = new Date().getFullYear();
+                return y - this.birth;
+            }*/
+            /*function age() {
+            var y = new Date().getFullYear();
+                return y - this.birth;
+            } */
+        };
+        console.log(" xiaoming.age = ", xiaoming.age);
+        console.log(" xiaoming.age() = ", xiaoming.age());
+        /*xiaoming.age =  ƒ () {var y = new Date().getFullYear();
+                        return y - this.birth;
+                    }
+        xiaoming.age() =  32*/
+
+        xiaoming.age; // function xiaoming.age()
+        xiaoming.age(); // 今年调用是25,明年调用就变成26了
+    </script>
+
+    <script>
+        var count = 0;
+        var oldParseInt = parseInt; // 保存原函数
+
+        window.parseInt = function () {
+            count += 1;
+            return oldParseInt.apply(null, arguments); // 调用原函数
+             
+        };
+
+        
+
+        //for语句
+        var par = ['10', '20', '30']
+        for (var p of par) {
+            var r = parseInt(p);
+            console.log(" count= ", count);
+            console.log("parseInt('", p, "')=", r);
+        };
+
+
+        //函数
+         function cons(x){
+            var sum =0;
+            for (var p of x) {
+                var t=parseInt(p)
+                sum += t;
+                console.log("parseInt('", p, "')=", t);      
+                console.log(" count= ", count);
+            };
+            return sum;
+        }
+        //函数的含义：封装起来的方法
+        //函数的调用含义：给方法赋值，让其计算
+        //函数的调用及其与for循环结合后的效果
+        //函数的return语句的含义，见Z
+        var z=cons(['10', '20', '30'])
+        console.log(" sum= ", z);
+
+        //基本功能
+        var a = parseInt('10');
+        console.log(" count1 = ", count);
+        console.log(" parseInt('10') = ", a);
+
+        var b  =parseInt('20');
+        console.log(" count2 = ", count);
+        console.log("  parseInt('20') = ",  b);
+
+        var c  =parseInt('30');
+        console.log(" count3 = ", count);
+        console.log("  parseInt('30') = ",  c); 
+    </script>
+
+</body>
+</html>

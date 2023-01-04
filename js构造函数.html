@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Student(props) {
+            this.name = props.name || '匿名'; // 默认值为'匿名'
+            this.grade = props.grade || 1; // 默认值为1
+        }
+
+        Student.prototype.hello = function () {
+            alert('Hello, ' + this.name + '!');
+        };
+
+        function createStudent(props) {
+            return new Student(props || {})
+        }
+        console.log('createStudent().name=', createStudent().name);    //匿名
+        console.log('createStudent().grade=', createStudent().grade);   //1
+        console.log('createStudent({name:lily}.name)=', createStudent({name:'lily'}).name); //lily
+        console.log('createStudent({name:lily}).grade=', createStudent({name:'lily'}).grade);  //1
+        console.log('createStudent({grade:2}).grade=', createStudent({grade:'2'}).grade); //2
+        console.log('createStudent({grade:2}).name=', createStudent({grade:'2'}).name);  // 匿名
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function normalize(arr) {
+            var res1=[];
+            for(var i of arr) {
+                var res= i.toLowerCase()[0].toUpperCase() + i.toLowerCase().substring(1);
+                // var res= i[0].toUpperCase() + i.substring(1).toLowerCase();
+                res1.push(res);
+            };
+            return res1;
+        }
+        console.log('normalize(arr)=', normalize(['adam', 'LISA', 'barT']));
+        // return arr.map(x=>(x.substring(0,1).toUpperCase()+x.substring(1).toLowerCase()));
+        //return arr.map(name=>name[0].toUpperCase()+name.substring(1).toLowerCase());
+        //return arr.map(s=>Array.from(s.toLowerCase()).map((x,i)=>i===0?x.toUpperCase():x).reduce((x,y)=>x+y));
+        /*function normalize(arr) {
+            let a;
+            return arr.map(x=>{
+                a = (x.split('')).map(x=>x.toLowerCase())
+                a[0] = a[0].toUpperCase()
+                return a.reduce((x,y)=>x+y)
+            })
+            }*/
+
+    </script>
+    <script>
+        function normalize1(arr) {
+            return arr.map(function t(i){return i[0].toUpperCase() + i.substring(1).toLowerCase()});
+        }
+        console.log('normalize1(arr)=', normalize1(['adam', 'LISA', 'barT']));
+    </script>
+</body>
+</html>

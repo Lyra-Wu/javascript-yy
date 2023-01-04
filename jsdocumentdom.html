@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <dl id="drink-menu" style="border:solid 1px #ccc;padding:6px;">
+        <dt>摩卡</dt>
+        <dd>热摩卡咖啡</dd>
+        <dt>酸奶</dt>
+        <dd>北京老酸奶</dd>
+        <dt>果汁</dt>
+        <dd>鲜榨苹果汁</dd>
+    </dl>
+    <script>
+        var menu = document.getElementById('drink-menu');
+        var drinks = document.getElementsByTagName('dt');
+        var i, s;
+
+        s = '提供的饮料有:';
+        for (i=0; i<drinks.length; i++) {
+            s = s + drinks[i].innerHTML + ',';
+        }
+        console.log(s);
+    </script>
+</body>
+</html>
