@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-header">Promise 初体验</h2>
+        <button class="btn btn-primary" id="btn">点击抽奖</button>
+    </div>
+    <script>
+         //生成随机数
+         function rand(m,n){
+        return Math.ceil(Math.random() *(n-m+1))+ m-1;}
+        /**点击按钮， 1s 后显示是否中奖(30%概率中奖)
+        若中奖弹出 恭喜恭喜，奖品为 10万 RMB 劳斯莱斯优惠券 
+        若未中奖弹出1 再接再厉 */
+        //获取元素对象
+        const btn = document.querySelector('#btn');
+        //绑定单击事件
+        btn.addEventListener('click', function(){
+
+        //Promise实现
+        //构造函数对象实例化
+        //const p = new Promise(()=>{})
+        const p = new Promise((resolve, reject) => {
+        // resolve 解决   函数类型的数据
+        // reject 拒绝    函数类型的数据
+        //**********************************************************************************************************
+        //promise封装异步操作代码如下:
+            setTimeout(() => {
+                //30% 1-100 1230
+                //获取从1- 10日的一个随机数 
+                let n = rand(1, 100);
+                //判断
+                if(n <= 30){
+                resolve(n);//调用resolve()   // 并且将 promise 对象P的状态设置为 『成功』
+                //resolve(), reject()参数n, 即为将成功或者失败后的结果值传递给相应回调函数&&&&&&&&&&&&&&&&&&&&&&&&&
+                }else{
+                    reject(n); // 将 promise 对象的状态设置为 『失败』
+                }
+            }, 1000);
+        });
+
+        //调用 then 方法 
+        // p.then(对象状态成功回调函数参数1()=>{}, 执行失败回调函数参数2()=>{})
+        //由then()方法处理执行成功或者失败后的结果——
+        //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+        //参数value、reason仅仅为形参，换成参数a、b，效果也一样  //注意promise中resolve、reject参数n直接传递给then的关联
+        p.then((value) => {
+            alert('恭喜恭喜，奖品为 10万 RMB劳斯莱斯优惠券,您的中奖号码为'+ value);
+        }, (reason) => {
+            alert('再接再厉,您的中奖号码为'+reason);
+        });
+        //**********************************************************************************************************
+    });
+    </script>
+</body>
+</html>
