@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>串行执行一系列需要异步计算获得结果的任务</title>
+</head>
+<body>
+    <script>
+        var logging = document.getElementById('test-promise2-log');
+        while (logging.children.length > 1) {
+            logging.removeChild(logging.children[logging.children.length - 1]);
+        }
+
+        function log(s) {
+            var p = document.createElement('p');
+            p.innerHTML = s;
+            logging.appendChild(p);
+        }
+
+        // 0.5秒后返回input*input的计算结果:
+        function multiply(input) {
+            return new Promise(function (resolve, reject) {
+                log('calculating ' + input + ' x ' + input + '...');
+                setTimeout(resolve, 500, input * input);
+            });
+        }
+
+        // 0.5秒后返回input+input的计算结果:
+        function add(input) {
+            return new Promise(function (resolve, reject) {
+                log('calculating ' + input + ' + ' + input + '...');
+                setTimeout(resolve, 500, input + input);
+            });
+        }
+
+        var p = new Promise(function (resolve, reject) {
+            log('start new Promise...');
+            resolve(123);
+        });
+
+        p.then(multiply)
+        .then(add)
+        .then(multiply)
+        .then(add)
+        .then(function (result) {
+            log('Got value: ' + result);
+        });
+        /*Log:
+        start new Promise...
+        calculating 123 x 123...
+        calculating 15129 + 15129...
+        calculating 30258 x 30258...
+        calculating 915546564 + 915546564...
+        Got value: 1831093128*/
+    </script>
+</body>
+</html>

@@ -21,7 +21,6 @@
             logging.appendChild(p);
         }
 
-
         new Promise(function (resolve, reject) {
             log('start new Promise...');
             var timeOut = Math.random() * 2;
@@ -41,15 +40,12 @@
         }).catch(function (reason) {
             log('Failed: ' + reason);
         });
-
+        //注意r、reason和resolve、reject的关系，&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+        //r、reason为形参，分别对应resolve、reject的调用&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
         /*Log:
-
         start new Promise...
-
         set timeout to: 0.590900102904043 seconds.
-
         call resolve()...
-
         Done: 200 OK*/
     </script>
 </body>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- HTML结构 -->
+    <div id="test-jquery">
+        <p id="para-1" class="color-red">JavaScript</p>
+        <p id="para-2" class="color-green">Haskell</p>
+        <p class="color-red color-green">Erlang</p>
+        <p name="name" class="color-black">Python</p>
+        <form class="test-form" target="_blank" action="#0" onsubmit="return false;">
+            <legend>注册新用户</legend>
+            <fieldset>
+                <p><label>名字: <input name="name"></label></p>
+                <p><label>邮件: <input name="email"></label></p>
+                <p><label>口令: <input name="password" type="password"></label></p>
+                <p><button type="submit">注册</button></p>
+            </fieldset>
+        </form>
+    </div>
+    <script>
+        var selected = null;
+        // 仅选择JavaScript
+        selected = $('#para-1');
+        selected = $('[class=color-red]');  // 完全匹配的方式
+        //仅选择Erlang
+        selected = $('[class="color-red color-green"]')
+        selected = $('.color-red.color-green')
+        //选择JavaScript和Erlang
+        selected = $('.color-red');
+        //选择所有编程语言
+        selected = $('[class^="color-"]');
+        //选择名字input
+        selected = $('input[name=name]');
+        //选择邮件和名字input
+        selected = $('input[name=name],input[name=email]');
+    </script>
+    <script>
+        var selected = null;
+        var selected1 = $('#para-1');   //仅选择JavaScript
+        var selected2 = $('.red.green');   //仅选择Erlang
+        var selected3 = $('#para-1,.red.green');   //选择JavaScript和Erlang
+        var selected4 = $('[class^="color-"]'); ;   //选择所有编程语言
+        var selected5 = $('input[name=name]');   //选择名字input
+        var selected6 = $('input[name=name],input[name=email]');   //选择邮件和名字input
+        //2.selected = $('[class="color-red color-green"]')
+        //3.selected = $('.color-red');
+    </script>
+</body>
+</html>

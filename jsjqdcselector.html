@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- HTML结构 -->
+    <div class="test-selector">
+        <ul class="test-lang">
+            <li class="lang-javascript">JavaScript</li>
+            <li class="lang-python">Python</li>
+            <li class="lang-lua">Lua</li>
+        </ul>
+        <ol class="test-lang">
+            <li class="lang-swift">Swift</li>
+            <li class="lang-java">Java</li>
+            <li class="lang-c">C</li>
+        </ol>
+    </div>
+    <script>
+        var selected = null;
+        // 分别选择所有语言，所有动态语言，所有静态语言，JavaScript，Lua，C等:
+        //selected = $('div.test-selector li'); 
+        //selected = $('ul.test-lang li');
+        //selected = $('ol.test-lang li');
+        //selected = $('ul.test-lang li.lang-javascript');
+        //selected = $('ul.test-lang>li.lang-lua');
+        //selected = $('ol.test-lang li:last-child');
+    </script>
+</body>
+</html>

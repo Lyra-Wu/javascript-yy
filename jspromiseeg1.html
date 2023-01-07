@@ -20,8 +20,28 @@
                     log('call reject()...');
                     reject('timeout in ' + timeOut + ' seconds.');
                 }
+                // resolve、reject本身也是2个函数类型的数据，异步任务成功时调用resolve，失败reject；
+                // 而且Promise.resolve() 和 Promise.reject() 方法，还可以返回执行成功或失败之后的结果值
+                // Promise.resolve() 返回成功状态，Promise.reject()返回失败后的结果值
             }, timeOut * 1000);
         }
+
+
+        var p1 = new Promise(test);
+        // const p = new Promise((resolve, reject) => {})
+        // const p = new Promise(function())
+        var p2 = p1.then(function (result) {
+            console.log('成功：' + result);
+        });
+        //p.then() p.then(()=>{}, ()=>{})
+        //p.then(对象状态成功回调()=>{}, 执行失败回调()=>{})
+        // p1.then(function (result) {成功回调函数})，result只是个形参，默认返回成功后状态
+        var p3 = p2.catch(function (reason) {
+            console.log('失败：' + reason);
+        });
+        // p.catch()执行失败后的回调函数
+        //p.catch()其实也是一个单独的封装，其内部也是通过then()方法来实现的。
+        //同理，reason也只是个形参，默认返回失败原因  
     </script>
 </body>
 </html>
